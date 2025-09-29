@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+@import "tailwindcss";
+
+/* Gradient hero background & subtle animation */
+:root{
+  --g1: #8b5cf6; /* purple */
+  --g2: #06b6d4; /* teal */
+  --g3: #f59e0b; /* amber */
+}
+
+body {
+  @apply bg-gray-50 text-slate-800 font-sans;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Hero gradient panel */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(6,182,212,0.10) 45%, rgba(245,158,11,0.06) 100%);
+  backdrop-filter: blur(4px);
+}
+
+/* Animated angled gradient band */
+.gradient-band {
+  position: absolute;
+  inset: -40% -40% auto auto;
+  width: 140%;
+  height: 120%;
+  transform: rotate(-12deg);
+  filter: blur(36px);
+  background: linear-gradient(90deg, rgba(139,92,246,0.18), rgba(6,182,212,0.12), rgba(245,158,11,0.10));
+  z-index: 0;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Drawing area style */
+.drawing-placeholder {
+  @apply bg-white/90 border border-dashed border-gray-200 rounded-2xl shadow-md;
+}
+
+/* Switch pseudo style */
+.switch {
+  @apply inline-flex items-center gap-3;
+}
+.switch .knob {
+  @apply w-9 h-5 bg-white rounded-full shadow-sm border;
+  transition: transform .18s;
+}
