@@ -5,6 +5,8 @@ import RightPanel from "./draw/RightPanel";
 import CanvasArea from "./draw/CanvasArea";
 import SimpleCanvas from "./draw/SimpleCanvas";
 import MagicBento from './MagicBento'
+import ModeToggle from './ModeToggle'; 
+
 
 export default function Hero() {
   const [proMode, setProMode] = useState(false);
@@ -24,7 +26,7 @@ export default function Hero() {
         className="h-screen flex flex-col justify-center items-center text-center px-6"
       >
         <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900">
-          draw<span className="text-indigo-600">IA</span>
+          draw<span className="text-pink-600">IA</span>
         </h1>
         <p className="mt-4 text-lg md:text-xl text-slate-600 max-w-2xl">
           You imagine it. <span className="font-semibold">We draw it.</span>
@@ -32,7 +34,7 @@ export default function Hero() {
 
         <button
           onClick={handleScrollToCanvas}
-          className="mt-10 px-8 py-3 rounded-full bg-indigo-600 text-white text-lg shadow-md hover:bg-indigo-700 hover:scale-[1.03] transition transform"
+          className="mt-10 px-8 py-3 rounded-full bg-pink-600 text-white text-lg shadow-md hover:bg-pink-700 hover:scale-[1.03] transition transform"
         >
           START
         </button>
@@ -44,32 +46,8 @@ export default function Hero() {
         className="max-w-6xl mx-auto px-6 pb-24 pt-8"
       >
         {/* Switch Mode mejorado */}
-        <div className="flex justify-center mb-6">
-          <div
-            className="relative flex items-center bg-gray-200 rounded-full p-1 cursor-pointer w-56"
-            onClick={() => setProMode(!proMode)}
-          >
-            <div
-              className={`absolute top-1 bottom-1 w-1/2 rounded-full bg-indigo-500 transition-transform ${
-                proMode ? "translate-x-full" : "translate-x-0"
-              }`}
-            />
-            <span
-              className={`flex-1 text-center z-10 font-medium transition-colors ${
-                !proMode ? "text-white" : "text-gray-600"
-              }`}
-            >
-              Simple
-            </span>
-            <span
-              className={`flex-1 text-center z-10 font-medium transition-colors ${
-                proMode ? "text-white" : "text-gray-600"
-              }`}
-            >
-              Pro Mode
-            </span>
-          </div>
-        </div>
+        <ModeToggle proMode={proMode} setProMode={setProMode} />
+
 
         {/* Canvas real */}
         <div className="flex flex-col h-[80vh] w-full shadow-lg rounded-lg overflow-hidden">
@@ -110,7 +88,7 @@ export default function Hero() {
             enableSpotlight={true}
             enableBorderGlow={true}
             enableTilt={true}
-            enableMagnetism={true}
+            enableMagnetism={false}
             clickEffect={true}
             spotlightRadius={300}
             particleCount={12}
