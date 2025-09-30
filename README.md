@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# DrawIA - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**DrawIA** es una aplicación web para generar imágenes profesionales a partir de bocetos. Esta carpeta contiene únicamente el frontend de la aplicación.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Estado del proyecto
 
-## React Compiler
+Este proyecto está en desarrollo activo. Las características principales del frontend, como el lienzo de dibujo, el selector de estilos y la interacción con el backend, están implementadas y son funcionales. Actualmente, el proyecto se encuentra en una fase de mejora y expansión, con planes de agregar nuevas funcionalidades para enriquecer la experiencia del usuario.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Stack Tecnológico
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Frontend:** Vite + React + TypeScript + Tailwind CSS
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalación y ejecución local
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Clonar el repositorio
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/jjulianne/drawIA.git
+cd drawIA/frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Instalar dependencias
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### Ejecutar servidor de desarrollo
+
+```bash
+npm run dev
+```
+
+### Abrir en el navegador
+
+[http://localhost:5173](http://localhost:5173)
+
+## Uso
+
+1. Dibujar en el lienzo.
+2. Seleccionar un estilo predefinido.
+3. Agregar un prompt adicional si se desea.
+4. Presionar **Generar** para enviar la información al backend y recibir la imagen final creada por la IA.
+
+> Nota: El backend se encuentra por separado.
+
+## Estructura del proyecto frontend
+
+```
+frontend/
+├─ src/           # Código fuente React
+├─ public/        # Archivos públicos (index.html, favicon, etc.)
+├─ package.json
+├─ tsconfig.json
+├─ tailwind.config.js
+└─ vite.config.ts
+```
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT.
