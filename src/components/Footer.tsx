@@ -1,4 +1,4 @@
-import GradientText from "./GradientText";
+import GradientText from "./snippets/GradientText";
 
 // Datos del footer basados en tu concepto y tu información
 const FOOTER_DATA = {

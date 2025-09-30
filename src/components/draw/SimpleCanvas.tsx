@@ -2,47 +2,56 @@ import { useEffect, useRef, useState } from "react";
 import { Canvas, PencilBrush } from "fabric";
 
 export default function SimpleCanvas() {
-  const canvasInstanceRef = useRef<Canvas | null>(null);
+  // Ref para el elemento <canvas> del DOM
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  
+  // Usamos useState con una función para crear la instancia de Fabric
+  // Se inicializa sin un elemento DOM al principio.
+  const [canvas, setCanvas] = useState<Canvas | null>(null);
+
   const [color, setColor] = useState("#000000");
 
-  // Inicialización del canvas
+  // Este useEffect se encarga de la inicialización y limpieza
   useEffect(() => {
-    if (!canvasRef.current || canvasInstanceRef.current) return;
-    
-    // Crear canvas con Fabric.js v6
-    const canvas = new Canvas(canvasRef.current, {
-      isDrawingMode: true,
-      width: 800,
-      height: 500,
-      backgroundColor: '#ffffff'
-    });
-    
-    // Configurar el pincel para v6
+    // Solo se ejecuta si tenemos el elemento <canvas> en el DOM
+    if (canvasRef.current) {
+      // Creamos la instancia de Fabric y la guardamos en el estado
+      const fabCanvas = new Canvas(canvasRef.current, {
+        width: 800,
+        height: 500,
+        backgroundColor: '#ffffff',
+        isDrawingMode: true,
+      });
+      setCanvas(fabCanvas);
+
+      // La función de limpieza se ejecutará cuando el componente se desmonte
+      return () => {
+        // Hacemos una comprobación para estar seguros
+        if (fabCanvas) {
+          fabCanvas.dispose();
+        }
+      };
+    }
+  }, []); // El array vacío asegura que esto solo intente ejecutarse una vez al montar
+
+  // Este useEffect se encarga de ACTUALIZAR el pincel cuando el color o el canvas cambien
+  useEffect(() => {
+    // Si no hay canvas, no hagas nada
+    if (!canvas) return;
+
+    // Creamos y configuramos un nuevo pincel
     const brush = new PencilBrush(canvas);
     brush.width = 5;
     brush.color = color;
-    canvas.freeDrawingBrush = brush;
-    canvas.isDrawingMode = true;
-    
-    canvasInstanceRef.current = canvas;
-    
-    return () => {
-      canvas.dispose();
-      canvasInstanceRef.current = null;
-    };
-  }, []);
 
-  // Actualizar color del pincel
-  useEffect(() => {
-    const canvas = canvasInstanceRef.current;
-    if (canvas?.freeDrawingBrush) {
-      canvas.freeDrawingBrush.color = color;
-    }
-  }, [color]);
+    // Asignamos el pincel al canvas
+    canvas.freeDrawingBrush = brush;
+    // Nos aseguramos de que el modo de dibujo esté activo
+    canvas.isDrawingMode = true;
+
+  }, [color, canvas]); // Se ejecuta si 'color' o la instancia de 'canvas' cambian
 
   const clearCanvas = () => {
-    const canvas = canvasInstanceRef.current;
     if (canvas) {
       canvas.clear();
       canvas.backgroundColor = '#ffffff';
@@ -59,6 +68,7 @@ export default function SimpleCanvas() {
         />
         
         <div className="flex gap-6 items-center bg-white px-6 py-4 rounded-full shadow-lg">
+          {/* JSX de botones */}
           <div className="flex gap-3">
             <button
               className={`w-10 h-10 bg-black rounded-full border-2 transition-all hover:scale-110 ${
@@ -103,9 +113,7 @@ export default function SimpleCanvas() {
               title="Morado"
             />
           </div>
-          
           <div className="w-px h-8 bg-gray-300"></div>
-          
           <button
             onClick={clearCanvas}
             className="px-5 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full hover:from-pink-600 hover:to-pink-700 transition-all font-medium shadow-md hover:shadow-lg"

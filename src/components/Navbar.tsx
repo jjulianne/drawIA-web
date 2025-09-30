@@ -39,6 +39,7 @@ interface LinkItem {
 
 const links: LinkItem[] = [
   { href: "#draw", label: "Lets draw!" },
+  { href: "#tutorial-section", label: "TUTORIAL" },
   { href: "#about", label: "ABOUT US" },
   { href: "#contact", label: "CONTACT" },
 ];
