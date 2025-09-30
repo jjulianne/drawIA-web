@@ -78,7 +78,7 @@ export default function Hero() {
           
       <section className="max-w-6xl mx-auto px-6 py-24">
         <h2 className="text-4xl font-bold text-center mb-12 text-slate-900">
-          Mira lo que Puedes Crear
+          More more more!
         </h2>
         
         <div className="max-w-4xl mx-auto">

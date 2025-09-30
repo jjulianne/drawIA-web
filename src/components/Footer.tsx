@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
             >
               {/* Aplicando la animación GradientText */}
               <GradientText
-                colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                colors={["#fa74f3ff", "#ffffffff", "#fa74f3ff", "#ffffffff", "#fa74f3ff"]}
                 animationSpeed={3}
                 showBorder={false}
                 className="custom-class"
