@@ -32,7 +32,7 @@ export default function GradientText({
             backgroundSize: '300% 100%'
           }}
         >
-          <div
+          <span
             className="absolute inset-0 bg-black rounded-[1.25rem] z-[-1]"
             style={{
               width: 'calc(100% - 2px)',
@@ -41,7 +41,7 @@ export default function GradientText({
               top: '50%',
               transform: 'translate(-50%, -50%)'
             }}
-          ></div>
+          ></span>
         </div>
       )}
       <div

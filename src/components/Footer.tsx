@@ -10,8 +10,8 @@ const FOOTER_DATA = {
   // Enlaces de navegación comunes
   links: [
     { title: "Inicio", href: "#home" },
-    { title: "Productos", href: "/productos" }, // Manteniendo el enlace de tu concepto
-    { title: "Sobre Nosotros", href: "/sobre-nosotros" }, // Manteniendo el enlace de tu concepto
+    { title: "Productos", href: "/productos" }, 
+    { title: "Sobre Nosotros", href: "/sobre-nosotros" },
     { title: "Servicios", href: "/servicios" },
     { title: "Términos", href: "/terminos" },
     { title: "Privacidad", href: "/privacidad" },
@@ -19,7 +19,7 @@ const FOOTER_DATA = {
   // Tu información de desarrollador
   developer: {
     name: "jjulianne",
-    githubUrl: "https://github.com/jjulianne", // Tu GitHub
+    githubUrl: "https://github.com/jjulianne",
   },
   // Información de copyright de tu proyecto original
   copyright: `© ${new Date().getFullYear()} DRAWIA`,
@@ -99,8 +99,8 @@ const Footer: React.FC = () => {
              <p>{copyright} — {builtWith}</p>
           </div>
 
-          {/* Enlace al Desarrollador con ShinyText */}
-          <p className="text-center md:text-right">
+          {/* Enlace al Desarrollador con GradientText */}
+          <div className="text-center md:text-right">
             Página Web desarrollada por{' '}
             <a 
               href={developer.githubUrl} 
@@ -112,13 +112,13 @@ const Footer: React.FC = () => {
               <GradientText
                 colors={["#fa74f3ff", "#ffffffff", "#fa74f3ff", "#ffffffff", "#fa74f3ff"]}
                 animationSpeed={3}
-                showBorder={false}
+                showBorder={true}
                 className="custom-class"
               >
                 {developer.name} 
               </GradientText>
             </a>
-          </p>
+          </div>
 
         </div>
       </div>
